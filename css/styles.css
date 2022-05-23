@@ -168,8 +168,6 @@ margin-bottom: 30px;
 /*------BUTTON HERO-----*/
 
 .btn-hero{
-background-color: var(--accent-color);
-color: var(--bckground-color);
 font-family: var(--primaly-font-family);
 font-weight: 700;
 font-size: 16px;
@@ -181,6 +179,17 @@ border-radius: 4px;
 border-style: hidden;
 padding: 10px 32px;
 min-width: 200px;
+color: var(--bckground-color);
+background-color: var(--accent-color);
+transition: box-shadow var(--animations),
+color var(--animations),
+background-color var(--animations)
+}
+
+.btn-hero:focus,
+.btn-hero:hover {
+background-color: #188CE8;
+
 }
 
 /*------BENEFITS-------*/
@@ -240,6 +249,7 @@ font-weight: 700;
 line-height: 1.14;
 text-align: center;
 letter-spacing: 0.03em;
+text-transform: uppercase;
 position: absolute;
 background: rgba(47, 48, 58, 0.8);
 color: var(--bckground-color);
@@ -631,7 +641,7 @@ height: 50px;
 width: 358px;
 }
 
-.mailing-form ::placeholder{
+.mailing-form::placeholder{
 font-size: 16px;
 line-height: 1.25;
 letter-spacing: 0.03em;
@@ -641,8 +651,6 @@ padding: 15px;
 .btn-mailing {
 border-radius: 4px;
 border-style: hidden;
-background-color: var(--accent-color);
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 cursor: pointer;
 margin-left: 12px;
 padding: 10px 29px 10px 0;
@@ -650,7 +658,18 @@ min-width: 200px;
 font-size: 16px;
 line-height: 1.87;
 letter-spacing: 0.06em;
+
 color: var(--bckground-color);
+background-color: var(--accent-color);
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+transition: box-shadow var(--animations),
+color var(--animations),
+background-color var(--animations)
+}
+
+.btn-mailing:focus,
+.btn-mailing:hover {
+background-color: #188CE8;
 }
 
 .icon-send{
@@ -677,13 +696,14 @@ transition: opacity var(--animations);
 position: absolute;
 top: 50%;
 left: 50%;
-width: 528px;
-height: 581px;
+max-width: 528px;
+max-height: 581px;
 background-color: var(--bckground-color);
 box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
 border-radius: 4px;
 transform: translate(-50%, -50%) scale(1);
 transition: transform var(--animations);
+padding: 40px;
 }
 
 .backdrop.is-hidden{
@@ -698,6 +718,7 @@ transform: translate(-50%, -50%) scale(1.1);
 .modal-close{
 position: absolute;
 right: 0;
+top: 0;
 width: 30px;
 height: 30px;
 margin-right: 8px;
@@ -705,7 +726,6 @@ margin-top: 8px;
 
 display: flex;
 align-items: center;
-justify-content: center;
 
 cursor: pointer;
 background: var(--bckground-color);
@@ -724,69 +744,100 @@ font-size: 20px;
 line-height: 1.15;
 text-align: center;
 letter-spacing: 0.03em;
-
-padding-top: 40px;
-margin-bottom: 30px;
+margin-bottom: 12px;
 }
 
 /* --------FORM-------- */
 
-.form{
-padding: 0 40px;
-}
-
-.form-field{
+.form-label{
+position: relative;
 margin-bottom: 10px;
 display: flex;
 flex-direction: column;
 }
 
-.form-field label{
+.form-text{
 margin-bottom: 4px;
 font-size: 12px;
-line-height: 14px;
+line-height: 1.16;
 letter-spacing: 0.01em;
 
 color: var(--form-color);
 }
 
-.form-field input{
-margin: 0;
+.form-input{
+padding-left: 42px;
+
 border: 1px solid rgba(33, 33, 33, 0.2);
 border-radius: 4px;
 height: 40px;
+outline: none;
 
+cursor: pointer;
 }
 
-.form-field input::placeholder{
+.icon-form{
+position: absolute;
+top: 50%;
+transform: translate(Y -50%);
+margin-left: 15px;
+}
 
+.form-input:focus{
+border-color: var(--accent-color);
+}
+
+.form-input:focus + .icon-form{
+fill: var(--accent-color);
 }
 
 /* -------TEXT AREA------- */
 
-.form-field textarea{
+.comment{
 border: 1px solid rgba(33, 33, 33, 0.2);
 border-radius: 4px;
+resize: none;
+padding: 12px 16px;
+outline: none;
+}
 
+.comment:focus{
+border-color: var(--accent-color);
+}
+
+.form-label ::placeholder{
+color: rgba(117, 117, 117, 0.5);
 }
 
 /* -------CHECKBOX-------- */
 
-.checkbox{
-margin: 20px 0 30px;
+.checkbox-label{
+display: flex;
+align-items: center;
+margin-bottom: 30px;
 }
 
-.checkbox input[type='checkbox']{
-
+.label:checked{
+transform: translateX(10px);
 }
 
-.checkbox label{
-margin-left: 7px;
+.checkbox-icon{
+margin-right: 7px;
+}
 
+.checkbox-input:checked + .checkbox-icon{
+fill: var(--accent-color);
+background-color: var(--accent-color);
+background-image: url(../images/checked.svg);
+background-size: contain;
+background-origin: content-box;
+}
+
+.checkbox-text{
+font-weight: 400;
 font-size: 14px;
-line-height: 24px;
+line-height: 1.71;
 letter-spacing: 0.03em;
-
 color: var(--form-color);
 }
 
@@ -803,12 +854,19 @@ justify-content: center;
 
 .btn-send{
 border-radius: 4px;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 border-style: hidden;
 padding: 10px 55px;
 text-align: center;
-margin-bottom: 40px;
 cursor: pointer;
 
+font-weight: 700;
+font-size: 16px;
+line-height: 1.87;
+letter-spacing: 0.06em;
+
+color: var(--bckground-color);
+background-color: var(--accent-color);
 transition: box-shadow var(--animations),
 color var(--animations),
 background-color var(--animations)
